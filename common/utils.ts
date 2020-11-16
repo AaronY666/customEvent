@@ -10,3 +10,16 @@ export function isMobile(): boolean {
 export function isObject(obj: any): boolean {
     return Object.prototype.toString.call(obj) === '[object Object]';
 };
+
+
+export function packageEvent(e) {
+    let touchEvent = e.changedTouches?.[0];
+    if (!touchEvent) {
+        return false;
+    }
+    for (let key in touchEvent) {
+        if (e[key] === undefined) {
+            e[key] = touchEvent[key];
+        }
+    }
+}
