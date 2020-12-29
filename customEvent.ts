@@ -2,7 +2,7 @@ import { isMobile } from './common/utils';
 
 import {
     pointDownHandler, pointMoveHandler, pointUpHandler,
-    mouseOverHandler, mouseOutHandler, clickHandler
+    mouseOverHandler, mouseOutHandler
 } from "./handler/eventHandler"
 
 export default class CustomEvent {
@@ -43,15 +43,15 @@ export default class CustomEvent {
 
         el.addEventListener(MouseDown, pointDownHandler.bind(this))
 
-        el.addEventListener(MouseMove,pointDownHandler.bind(this))
+        el.addEventListener(MouseMove, pointMoveHandler.bind(this))
 
-        el.addEventListener(MouseUp,pointDownHandler.bind(this))
+        el.addEventListener(MouseUp, pointUpHandler.bind(this, this.onClick))
 
-        el.addEventListener('click',pointDownHandler.bind(this))
+        // el.addEventListener('click', clickHandler.bind(this))
 
-        el.addEventListener('mouseover',pointDownHandler.bind(this))
+        el.addEventListener('mouseover', mouseOverHandler.bind(this))
 
-        el.addEventListener('mouseout',pointDownHandler.bind(this))
+        el.addEventListener('mouseout', mouseOutHandler.bind(this))
 
     }
 
